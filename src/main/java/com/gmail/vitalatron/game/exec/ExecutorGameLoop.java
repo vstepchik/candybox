@@ -4,10 +4,10 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 public class ExecutorGameLoop extends AbstractTimedLoop {
-    protected Executor executor = Executors.newSingleThreadExecutor();
+    protected final Executor executor = Executors.newSingleThreadExecutor();
     protected long lastExecutionNanoTime;
 
-    protected Runnable loop = new Runnable() {
+    protected final Runnable loop = new Runnable() {
         @Override
         public void run() {
             while (!ExecutorGameLoop.this.stopped) {

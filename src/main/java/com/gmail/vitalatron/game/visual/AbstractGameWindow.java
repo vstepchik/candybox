@@ -9,7 +9,7 @@ import java.util.List;
 
 public abstract class AbstractGameWindow implements GameWindow {
     protected final List<Drawable> drawableItems = new ArrayList<>();
-    protected TimedLoop repaintLoop;
+    protected final TimedLoop repaintLoop;
     protected GameTask repaintTask = GameTask.EMPTY;
 
     public AbstractGameWindow() {

@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class Sprite implements Drawable {
 
-    protected Image image;
+    protected final Image image;
     protected int x;
     protected int y;
 

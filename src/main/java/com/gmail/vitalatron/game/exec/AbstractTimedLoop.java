@@ -7,7 +7,7 @@ public abstract class AbstractTimedLoop implements TimedLoop {
     protected volatile int delay = 50;
     protected volatile boolean paused;
     protected volatile boolean stopped;
-    protected List<GameTask> tasks = new CopyOnWriteArrayList<>();
+    protected final List<GameTask> tasks = new CopyOnWriteArrayList<>();
 
     @Override
     public synchronized void setTimeout(int milliseconds) {
