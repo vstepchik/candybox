@@ -75,14 +75,14 @@ public class SwingGameWindow extends AbstractGameWindow {
     protected static JFrame createGameFrame(String title, Dimension size, Component screenComponent) {
         JFrame frame = new JFrame(title);
 
-        // position
-        frame.setLocationRelativeTo(null);
-
         // size
         frame.setResizable(false);
         frame.setMaximumSize(size);
         frame.setMinimumSize(size);
         frame.setPreferredSize(size);
+
+        // position
+        frame.setLocationRelativeTo(null);
 
         // input handling
         frame.setFocusTraversalKeysEnabled(false);
