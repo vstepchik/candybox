@@ -33,8 +33,8 @@ public class SwingGameWindow extends AbstractGameWindow {
             @Override
             public void execute(double delta) {
                 Graphics2D g = (Graphics2D) SwingGameWindow.this.screenImage.getGraphics();
-                for (Drawable item : SwingGameWindow.this.drawableItems) {
-                    item.draw(g);
+                if (currentScene != null) {
+                    currentScene.draw(g);
                 }
                 screen.repaint();
             }

@@ -11,9 +11,19 @@ public interface GameWindow {
 
     public void setFps(int fps);
 
-    public void addDrawableItem(Drawable drawable);
+    public void addScene(Scene scene);
 
-    public void removeDrawableItem(Drawable drawable);
+    public Scene getScene(String name);
 
-    public void clearDrawableItems();
+    public void removeScene(Scene scene);
+
+    public void removeScene(String name);
+
+    public void clearScenes();
+
+    public Scene getCurrentScene();
+
+    public void setCurrentScene(String sceneName);
+
+    public void setCurrentScene(Scene scene);
 }
