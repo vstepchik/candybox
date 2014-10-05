@@ -1,10 +1,14 @@
 package com.gmail.vitalatron.game.visual;
 
+import com.gmail.vitalatron.game.input.KeyboardButton;
+import com.gmail.vitalatron.game.input.MouseButton;
+import com.gmail.vitalatron.game.input.UserInputListener;
+
 import java.awt.*;
 import java.util.*;
 import java.util.List;
 
-public class Scene implements Drawable, Layer.ZIndexChangeListener {
+public class Scene implements Drawable, Layer.ZIndexChangeListener, UserInputListener {
 
     private final List<Layer> layers = new ArrayList<>();
 
@@ -55,5 +59,35 @@ public class Scene implements Drawable, Layer.ZIndexChangeListener {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public void keyPressed(KeyboardButton button) {
+        /* empty */
+    }
+
+    @Override
+    public void keyReleased(KeyboardButton button) {
+        /* empty */
+    }
+
+    @Override
+    public void mouseButtonPressed(MouseButton button) {
+        /* empty */
+    }
+
+    @Override
+    public void mouseButtonReleased(MouseButton button) {
+        /* empty */
+    }
+
+    @Override
+    public void mouseMoved(Point from, Point to) {
+        /* empty */
+    }
+
+    @Override
+    public void mouseWheelMoved(int amount) {
+        /* empty */
     }
 }

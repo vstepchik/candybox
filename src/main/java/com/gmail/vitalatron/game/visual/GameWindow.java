@@ -11,19 +11,5 @@ public interface GameWindow {
 
     public void setFps(int fps);
 
-    public void addScene(Scene scene);
-
-    public Scene getScene(String name);
-
-    public void removeScene(Scene scene);
-
-    public void removeScene(String name);
-
-    public void clearScenes();
-
-    public Scene getCurrentScene();
-
-    public void setCurrentScene(String sceneName);
-
-    public void setCurrentScene(Scene scene);
+    void setSceneHolder(SceneHolder sceneHolder);
 }
