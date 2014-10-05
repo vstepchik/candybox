@@ -12,12 +12,19 @@ public class TextMenuItem extends MenuItemBase<TextMenuItem> {
         super(parent);
     }
 
-    public TextMenuItem(String label, TextMenuItem parent, ControlAction action) {
-        super(parent, action);
+    public TextMenuItem(TextMenuItem parent, String label) {
+        super(parent);
+        setLabel(label);
     }
 
-    public TextMenuItem(String label, TextMenuItem parent, Set<TextMenuItem> children) {
+    public TextMenuItem(TextMenuItem parent, String label, ControlAction action) {
+        super(parent, action);
+        setLabel(label);
+    }
+
+    public TextMenuItem(TextMenuItem parent, String label, Set<TextMenuItem> children) {
         super(parent, children);
+        setLabel(label);
     }
 
     public void setDataSource(ViewDataSource<String> label) {

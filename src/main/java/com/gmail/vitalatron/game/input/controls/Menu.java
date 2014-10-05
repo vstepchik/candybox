@@ -8,12 +8,18 @@ public class Menu<T extends MenuItemBase<T>> {
 
     protected T selectedMenuItem;
 
+    protected boolean cycledNavigation = true;
+
     public Menu(T rootMenu) {
         if (rootMenu == null) {
             throw new NullPointerException("Root menu is required!");
         }
         this.rootMenu = rootMenu;
         this.currentMenu = this.rootMenu;
+
+        if (this.currentMenu.getChildren().size() > 0) {
+            this.selectedMenuItem = this.currentMenu.getChildren().iterator().next();
+        }
     }
 
     public T getRootMenu() {
@@ -28,10 +34,18 @@ public class Menu<T extends MenuItemBase<T>> {
         return selectedMenuItem;
     }
 
+    public boolean isCycledNavigation() {
+        return cycledNavigation;
+    }
+
+    public void setCycledNavigation(boolean cycledNavigation) {
+        this.cycledNavigation = cycledNavigation;
+    }
+
     public void select() {
         this.selectedMenuItem.trigger();
 
-        if (currentMenu.getChildren().size() > 0) {
+        if (this.currentMenu.getChildren().size() > 0) {
             this.currentMenu = this.selectedMenuItem;
             this.selectedMenuItem = this.currentMenu.getChildren().iterator().next();
         }
@@ -48,14 +62,14 @@ public class Menu<T extends MenuItemBase<T>> {
         if (this.currentMenu.getChildren().size() == 0) {
             return;
         }
-        this.selectedMenuItem = currentMenu.getOffsetChild(this.selectedMenuItem, +1);
+        this.selectedMenuItem = this.currentMenu.getOffsetChild(this.selectedMenuItem, +1, this.cycledNavigation);
     }
 
     public void previous() {
         if (this.currentMenu.getChildren().size() == 0) {
             return;
         }
-        this.selectedMenuItem = currentMenu.getOffsetChild(this.selectedMenuItem, -1);
+        this.selectedMenuItem = this.currentMenu.getOffsetChild(this.selectedMenuItem, -1, this.cycledNavigation);
     }
 
 }

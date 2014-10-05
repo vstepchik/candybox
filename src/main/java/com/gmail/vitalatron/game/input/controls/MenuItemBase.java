@@ -5,7 +5,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-public abstract class MenuItemBase<T> {
+public abstract class MenuItemBase<T extends MenuItemBase> {
 
     protected final LinkedHashSet<T> children = new LinkedHashSet<>();
 
@@ -17,6 +17,9 @@ public abstract class MenuItemBase<T> {
 
     public MenuItemBase(T parent) {
         this.parent = parent;
+        if (this.parent != null) {
+            this.parent.addChild(this);
+        }
     }
 
     public MenuItemBase(T parent, ControlAction action) {
@@ -37,7 +40,11 @@ public abstract class MenuItemBase<T> {
         }
     }
 
-    T getOffsetChild(T offsetItem, int resultOffset) {
+    public void addChild(T child) {
+        children.add(child);
+    }
+
+    T getOffsetChild(T offsetItem, int resultOffset, boolean cycle) {
         if (this.children.size() == 0) {
             return null;
         }
@@ -50,6 +57,9 @@ public abstract class MenuItemBase<T> {
         }
 
         index += resultOffset;
+        if (cycle) {
+            index = (index >= 0) ? index % children.size() : children.size() - (Math.abs(index) % children.size() - 1);
+        }
         return (index < 0)
                 ? children.get(0)
                 : (index >= children.size()) ? children.get(children.size() - 1) : children.get(index);
