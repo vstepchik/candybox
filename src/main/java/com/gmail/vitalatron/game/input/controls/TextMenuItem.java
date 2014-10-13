@@ -1,6 +1,6 @@
 package com.gmail.vitalatron.game.input.controls;
 
-import java.util.Set;
+import java.util.List;
 
 public class TextMenuItem extends MenuItemBase<TextMenuItem> {
 
@@ -22,7 +22,7 @@ public class TextMenuItem extends MenuItemBase<TextMenuItem> {
         setLabel(label);
     }
 
-    public TextMenuItem(TextMenuItem parent, String label, Set<TextMenuItem> children) {
+    public TextMenuItem(TextMenuItem parent, String label, List<TextMenuItem> children) {
         super(parent, children);
         setLabel(label);
     }

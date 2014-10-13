@@ -1,13 +1,11 @@
 package com.gmail.vitalatron.game.input.controls;
 
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 public abstract class MenuItemBase<T extends MenuItemBase> {
 
-    protected final LinkedHashSet<T> children = new LinkedHashSet<>();
+    protected final List<T> children = new ArrayList<>();
 
     protected final T parent;
 
@@ -27,7 +25,7 @@ public abstract class MenuItemBase<T extends MenuItemBase> {
         setAction(action);
     }
 
-    public MenuItemBase(T parent, Set<T> children) {
+    public MenuItemBase(T parent, List<T> children) {
         this(parent);
         children.addAll(children);
     }
@@ -79,7 +77,7 @@ public abstract class MenuItemBase<T extends MenuItemBase> {
         return action;
     }
 
-    public LinkedHashSet<T> getChildren() {
+    public List<T> getChildren() {
         return children;
     }
 

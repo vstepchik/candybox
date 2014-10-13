@@ -43,18 +43,20 @@ public class Menu<T extends MenuItemBase<T>> {
     }
 
     public void select() {
-        this.selectedMenuItem.trigger();
+        MenuItemBase<T> itemToTrigger = this.selectedMenuItem;
 
-        if (this.currentMenu.getChildren().size() > 0) {
+        if (this.selectedMenuItem.getChildren().size() > 0) {
             this.currentMenu = this.selectedMenuItem;
             this.selectedMenuItem = this.currentMenu.getChildren().iterator().next();
         }
+
+        itemToTrigger.trigger();
     }
 
     public void back() {
-        if (this.selectedMenuItem.getParent() != null) {
-            this.currentMenu = this.selectedMenuItem.getParent();
-            this.selectedMenuItem = this.currentMenu.getChildren().iterator().next();
+        if (this.currentMenu.getParent() != null) {
+            this.selectedMenuItem = this.currentMenu;
+            this.currentMenu = this.currentMenu.getParent();
         }
     }
 
